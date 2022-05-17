@@ -189,7 +189,7 @@ final class NixGenerator
             str_replace(
                 array_keys($searchNreplace),
                 array_values($searchNreplace),
-                file_get_contents(__DIR__ . '/../res/composer-project.nix')
+                file_get_contents(__DIR__ . '/../../res/composer-project.nix')
             )
         );
 
