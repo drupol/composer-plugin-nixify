@@ -8,7 +8,7 @@
         "composer-plugin-api": "^2.3"
     },
     "require-dev": {
-        "composer/composer": "^2.3",
+        "composer/composer": "^2",
         "drupol/php-conventions": "^5.0",
         "phpunit/phpunit": "^9.5"
     },
