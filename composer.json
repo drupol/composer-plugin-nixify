@@ -1,6 +1,6 @@
 {
-    "name": "stephank/composer-plugin-nixify",
-    "description": "Composer plugin to help with Nix packaging",
+    "name": "drupol/composer-plugin-nixify",
+    "description": "Composer plugin to help with Nix packaging, temporary fork of stephank/composer-plugin-nixify",
     "license": "MIT",
     "type": "composer-plugin",
     "homepage": "https://github.com/stephank/composer-plugin-nixify",
