@@ -68,7 +68,7 @@ in stdenv.mkDerivation {
     export NIX_COMPOSER_PATH="$(readlink -f ${escapeShellArg composerPath})"
 
     # Run normal Composer install to complete dependency installation.
-    composer install -n -o --no-suggest --no-dev
+    composer install -n -o --no-suggest
 
     runHook postConfigure
   '';
