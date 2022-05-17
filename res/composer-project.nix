@@ -91,7 +91,7 @@ in stdenv.mkDerivation {
     export NIX_COMPOSER_PATH="$(readlink -f ${escapeShellArg composerPath})"
 
     # Invoke a plugin internal command to setup binaries.
-    composer nixify-install-bin "$out/bin"
+    # composer nixify-install-bin "$out/bin"
 
     runHook postInstall
   '';
