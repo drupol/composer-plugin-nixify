@@ -214,6 +214,7 @@ final class NixGenerator
             $this->cacheDir,
             substr(md5(uniqid('', true)), 0, 8)
         );
+        $this->fs->ensureDirectoryExists($tempDir);
 
         $toPreload = array_filter(
             array_map(
@@ -230,8 +231,9 @@ final class NixGenerator
                         return null;
                     }
 
-                    // The nix-store command requires a correct filename on disk, so we
-                    // prepare a temporary directory containing all the files to preload.
+                    // The nix-store command requires a correct filename on
+                    // disk, so we prepare a temporary directory containing all
+                    // the files to preload.
                     $dst = sprintf('%s/%s', $tempDir, $info['name']);
                     $copy = $this
                         ->fs
