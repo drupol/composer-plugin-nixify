@@ -150,13 +150,13 @@ final class NixGenerator
     {
         $package = $this->composer->getPackage();
 
-        // Build Nix code for cache entries.
+        // Build cached entries.
         $cacheEntries = array_filter(
             $collected,
             static fn (array $info): bool => 'cache' === $info['type']
         );
 
-        // Build Nix code for local entries.
+        // Build local entries.
         $localEntries = array_filter(
             $collected,
             static fn (array $info): bool => 'local' === $info['type']
@@ -174,7 +174,7 @@ final class NixGenerator
             'cacheEntries' => $cacheEntries,
             'composerPath' => $composerPath,
             'localEntries' => $localEntries,
-            'projectName' => $package->getExtra()['nix-expr-path'] ?? 'composer-project.nix',
+            'projectName' => self::safeNixStoreName($package->getName())
         ];
 
         $searchNreplace = [
@@ -320,7 +320,7 @@ final class NixGenerator
         string $cacheFile
     ): string {
         // If some packages were previously installed but since removed from
-        // cache, `sha256` will be false for those packages in `collected`.
+        // cache, `sha256` will be false for those packages.
         // Here, we amend cache by refetching, so we can then determine the
         // file hash again.
         $downloader = $this->composer->getDownloadManager()->getDownloader('file');

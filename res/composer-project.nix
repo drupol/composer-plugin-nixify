@@ -11,10 +11,9 @@
 with lib;
 
 let
-  json = ''
+  data = builtins.fromJSON ''
     {{json}}
   '';
-  data = builtins.fromJSON (json);
   composerPath = data.composerPath or phpPackages.composer.src;
   cacheEntries = data.cacheEntries or [];
   localEntries = data.localEntries or [];
@@ -68,7 +67,7 @@ in stdenv.mkDerivation {
     export NIX_COMPOSER_PATH="$(readlink -f ${escapeShellArg composerPath})"
 
     # Run normal Composer install to complete dependency installation.
-    composer install -n -o --no-suggest
+    composer install -n -o
 
     runHook postConfigure
   '';
