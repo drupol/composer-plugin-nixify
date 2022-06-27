@@ -197,7 +197,7 @@ final class NixGenerator
         $generateDefaultNix = $package->getExtra()['generate-default-nix'] ?? true;
 
         if ($generateDefaultNix && !file_exists('default.nix') && !file_exists('flake.nix')) {
-            file_put_contents('default.nix', file_get_contents(__DIR__ . '/../res/default.nix'));
+            file_put_contents('default.nix', file_get_contents(__DIR__ . '/../../res/default.nix'));
             $this->io->writeError(
                 '<info>A minimal default.nix was created. You may want to customize it.</info>'
             );
